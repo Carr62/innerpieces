@@ -274,9 +274,38 @@
     }
 
     @media(max-width: 900px) {
-        .magazine-layout { grid-template-columns: 1fr; gap: 3rem; }
+        .magazine-layout { grid-template-columns: 1fr; gap: 2.5rem; }
         .hero-img { height: 280px; }
         .welcome-hero { padding: 2rem 0 3rem; }
+    }
+    
+    @media(max-width: 600px) {
+        .welcome-hero { padding: 1.5rem 0 2rem; }
+        .welcome-title { font-size: 2rem; }
+        .welcome-sub { font-size: 1rem; }
+        
+        .hero-img { height: 220px; }
+        .hero-content { padding: 1.25rem; }
+        .hero-content h2 { font-size: 1.5rem; }
+        .hero-content p { font-size: 0.9rem; margin-bottom: 1rem; }
+        
+        .section-label { font-size: 0.7rem; }
+        
+        .list-item { padding: 0.75rem; }
+        .list-content h4 { font-size: 0.9rem; }
+        .list-thumb { width: 50px; height: 50px; }
+        .list-number { font-size: 1.2rem; min-width: 24px; }
+        
+        .guest-cta { padding: 1.5rem; }
+        .guest-cta h4 { font-size: 1.1rem; }
+        
+        .empty-state { padding: 2.5rem 1.5rem; }
+    }
+    
+    @media(max-width: 400px) {
+        .welcome-title { font-size: 1.75rem; }
+        .hero-img { height: 180px; }
+        .meta { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     }
 </style>
 

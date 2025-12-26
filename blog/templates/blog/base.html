@@ -366,6 +366,135 @@
 
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.3); opacity: 1; } }
         @keyframes ripple { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(2); opacity: 0; } }
+
+        /* ===========================================
+           COMPREHENSIVE MOBILE STYLES
+           =========================================== */
+        
+        /* Small phones */
+        @media (max-width: 480px) {
+            html { font-size: 14px; }
+            
+            .brand h1 { font-size: 1.4rem; }
+            
+            .container { padding: 0 1rem; }
+            
+            main { padding: 1rem 0; }
+            
+            .page-header h2 { font-size: 2rem; }
+            .page-header p { font-size: 0.9rem; }
+            
+            .glass-card:hover { 
+                transform: none; /* Disable hover lift on touch devices */
+            }
+            
+            #toast-container {
+                left: 1rem; right: 1rem; bottom: 1rem;
+            }
+            .toast {
+                padding: 0.75rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            footer { 
+                margin-top: 3rem; 
+                padding: 2rem 1rem; 
+            }
+        }
+        
+        /* Tablets and larger phones */
+        @media (max-width: 768px) {
+            /* Reduce animations for better performance */
+            .particle { display: none; }
+            
+            @keyframes gradientShift {
+                0%, 100% { background-position: 0% 0%; }
+            }
+            
+            /* Disable hover effects on touch */
+            .glass-card:hover {
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-soft);
+            }
+            
+            /* Improve tap targets */
+            nav a, .btn-write, .btn-join, .btn-cta {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .theme-toggle {
+                width: 44px;
+                height: 44px;
+            }
+            
+            /* Stack grid to single column on phones */
+            .grid-layout {
+                grid-template-columns: 1fr !important;
+                gap: 1.25rem;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .glass-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+            
+            .glass-card:active {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+            
+            /* Better touch feedback */
+            .btn-write:active,
+            .btn-join:active,
+            .btn-cta:active {
+                transform: scale(0.95);
+            }
+        }
+        
+        /* Safe area for notched phones (iPhone X+) */
+        @supports (padding: env(safe-area-inset-bottom)) {
+            footer {
+                padding-bottom: calc(2rem + env(safe-area-inset-bottom));
+            }
+            
+            #toast-container {
+                bottom: calc(1rem + env(safe-area-inset-bottom));
+            }
+            
+            nav ul {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+        
+        /* Landscape phone orientation */
+        @media (max-height: 500px) and (orientation: landscape) {
+            main { padding: 0.5rem 0; }
+            
+            .welcome-hero { padding: 1rem 0 2rem; }
+            
+            nav ul {
+                padding-top: 1rem;
+                gap: 1rem;
+            }
+        }
+        
+        /* Reduce motion for users who prefer it */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            .particle { display: none; }
+            #reading-progress { display: none; }
+        }
     </style>
 </head>
 <body>
